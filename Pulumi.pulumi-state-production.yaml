@@ -1,0 +1,11 @@
+config:
+  aws:allowedAccountIds:
+    - "907019612533"
+  aws:region: eu-central-1
+  pulumi-state:allowedRoles:
+    - arn:aws:iam::907019612533:role/aws-reserved/sso.amazonaws.com/eu-central-1/AWSReservedSSO_AdministratorAccess_b31c40fe2e6221d9
+    - arn:aws:iam::184896767354:role/aws-reserved/sso.amazonaws.com/eu-central-1/AWSReservedSSO_AdministratorAccess_5957a8bcdc676214
+    - arn:aws:iam::026643521047:role/aws-reserved/sso.amazonaws.com/eu-central-1/AWSReservedSSO_AdministratorAccess_b8f8d86666fe5d5b
+    - arn:aws:iam::907019612533:role/github-ci
+    - arn:aws:iam::184896767354:role/github-ci-root-access
+    - arn:aws:iam::026643521047:role/github-ci-admin

@@ -1,0 +1,7 @@
+{
+  "name": "gvpn-pulumi",
+  "dependencies": {
+    "@pulumi/aws": "6.25.1",
+    "@pulumi/pulumi": "3.109.0"
+  }
+}

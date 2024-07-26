@@ -1,0 +1,52 @@
+name: lint
+
+permissions:
+  id-token: write
+  contents: read
+
+on:
+  - pull_request
+
+concurrency:
+  group: ${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  prettier:
+    runs-on: [ubuntu-latest]
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 20.x
+      - run: npx -y prettier@3.2.5 --check .
+
+  # pulumi-preview:
+  #   runs-on: [ubuntu-latest]
+  #   if: github.base_ref  == 'master'
+  #   steps:
+  #     - uses: actions/checkout@v3
+  #     - uses: actions/setup-node@v3
+  #       with:
+  #         node-version: 20.x
+  #         cache: npm
+  #         cache-dependency-path: pulumi/package-lock.json
+
+  #     - uses: unfor19/install-aws-cli-action@v1
+  #       with:
+  #         version: 2
+
+  #     - name: Configure AWS Credentials
+  #       uses: aws-actions/configure-aws-credentials@v2
+  #       with:
+  #         aws-region: eu-central-1
+  #         role-to-assume: Insert your role here
+
+  #     - run: cd pulumi && npm ci
+  #     - uses: pulumi/actions@v4
+  #       with:
+  #         work-dir: pulumi
+  #         command: preview
+  #         stack-name: myorg/aws-pulumi-state
+  #       env:
+  #         PULUMI_ACCESS_TOKEN: ${{ secrets.PULUMI_ACCESS_TOKEN }}
